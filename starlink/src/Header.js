@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import starlinkLogo from 'Startlink_logo.svg';
+import starlinkLogo from './Starlink_Logo.svg';
 
 class Header extends Component {
     render() {
