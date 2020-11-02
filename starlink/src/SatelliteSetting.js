@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import {InputNumber, Button, Slider} from 'antd';
 
 class SatelliteSetting extends Component {
     constructor () {
