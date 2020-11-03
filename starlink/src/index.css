@@ -4,6 +4,7 @@
 @import "./Main.css";
 @import "antd/dist/antd.css";
 @import "./SatelliteSetting.css";
+@import "./SatelliteList.css";
 
 body {
   margin: 0;
