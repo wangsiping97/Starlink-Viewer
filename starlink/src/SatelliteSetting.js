@@ -119,7 +119,7 @@ class SatelliteSetting extends Component {
                         min={0}
                         max={90}
                         marks={durationMarkers}
-                        onChange={this.onDurationChange}
+                        onChange={this.onChangeDuration}
                     />
                 </div>
 
@@ -129,7 +129,7 @@ class SatelliteSetting extends Component {
                         size="large"
                         onClick={this.showSatellite}>Find Nearby</Button>
                 </div>
-                
+
             </div>
         )
     }
