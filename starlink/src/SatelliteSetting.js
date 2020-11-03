@@ -7,7 +7,10 @@ class SatelliteSetting extends Component {
         this.state = {
             observerLat: 0,
             observerLong: 0,
-            observerElevation: 0
+            observerElevation: 0,
+            satAlt: 90,
+            duration: [0, 0],
+            isLoading: false
         }
     }
 
@@ -19,20 +22,35 @@ class SatelliteSetting extends Component {
     }
 
     onChangeLat = (value) => {
-        console.log('value', value)
         this.setState ({
             observerLat: value
         })
     }
 
     onChangeEle = (value) => {
-        console.log('value', value)
         this.setState ({
             observerElevation: value
         })
     }
 
+    onChangeAlt = (value) => {
+        this.setState ({
+            satAlt: Number(90 - +value)
+        })
+    }
+
+    onChangeDuration = (value) => {
+        this.setState ({
+            duration: value
+        })
+    }
+
+    showSatellite = () => {
+        console.log('clicked')
+    }
+
     render() {
+        const durationMarkers = { 0: '0', 89: '90'};
         return (
             <div className="sat-setting">
                 <div className="loc-setting">
@@ -48,6 +66,7 @@ class SatelliteSetting extends Component {
                                 onChange={this.onChangeLong}
                             />
                         </div>
+
                         <div className="list-item right-item">
                             <label>Latitude: </label>
                             <InputNumber
@@ -59,7 +78,9 @@ class SatelliteSetting extends Component {
                                 onChange={this.onChangeLat}
                             />
                         </div>
+
                     </div>
+
                     <div className="setting-list">
                         <div className="list-item">
                             <label>Elevation(meters): </label>
@@ -72,7 +93,43 @@ class SatelliteSetting extends Component {
                             />
                         </div>
                     </div>
+
                 </div>
+
+                <div className="altitude-setting">
+                    <p className="setting-label">Restrictions</p>
+                    <div>
+                        <span>Show only satellites which are higher than <br /> altitude</span>
+                        <InputNumber
+                            min={0}
+                            max={90}
+                            defaultValue={0}
+                            style={{margin: "8px 2px 0"}}
+                            onChange={this.onChangeAlt} /> <span>degrees.</span>
+                    </div>
+                </div>
+
+                <div className="duration-setting">
+                    <p className="setting-label">Duration(sec)</p>
+                    <Slider
+                        className="duration-slider"
+                        range
+                        step={1}
+                        defaultValue={[0, 90]}
+                        min={0}
+                        max={90}
+                        marks={durationMarkers}
+                        onChange={this.onDurationChange}
+                    />
+                </div>
+
+                <div className="show-nearby">
+                    <Button 
+                        className="show-nearby-btn"
+                        size="large"
+                        onClick={this.showSatellite}>Find Nearby</Button>
+                </div>
+                
             </div>
         )
     }
